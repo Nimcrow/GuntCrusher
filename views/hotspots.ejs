@@ -1,0 +1,11 @@
+<h1>Hotspots</h1>
+<ul>
+    <% businesses.forEach(business => { %>
+        <li>
+            <h2><%= business.name %></h2>
+            <p>Rating: <%= business.rating %></p>
+            <p>Address: <%= business.address %></p>
+            <p>Category: <%= business.term %></p>
+        </li>
+    <% }) %>
+</ul>

@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#location-input {
+    margin: 20px;
+}
+
+#location {
+    padding: 10px;
+    width: 200px;
+}
+
+button {
+    padding: 10px;
+}
+
+#hotspots-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#hotspots-list li {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+}
