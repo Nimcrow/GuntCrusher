@@ -190,4 +190,3 @@ window.onload = () => {
     initMap();
     getUserLocation();
 };
-
