@@ -4,7 +4,7 @@ let hotspotMarker;
 
 // Initialize the map
 function initMap() {
-    map = L.map('map').setView([51.505, -0.09], 13); // Default to London
+    map = L.map('map').setView([32.7157, -117.1611], 13); // Default to San Diego
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
@@ -17,18 +17,34 @@ function getUserLocation() {
         navigator.geolocation.getCurrentPosition(position => {
             const lat = position.coords.latitude;
             const lng = position.coords.longitude;
-            map.setView([lat, lng], 13);
-            if (userMarker) {
-                userMarker.setLatLng([lat, lng]);
-            } else {
-                userMarker = L.marker([lat, lng]).addTo(map)
-                    .bindPopup('You are here').openPopup();
-            }
+            updateMapAndMarker(lat, lng);
+        }, error => {
+            // If user denies or blocks location, default to San Diego
+            handleGeolocationError();
         });
     } else {
         alert("Geolocation is not supported by this browser.");
     }
 }
+// Function to handle geolocation error
+function handleGeolocationError() {
+    const defaultLat = 32.7157; // San Diego latitude
+    const defaultLng = -117.1611; // San Diego longitude
+    updateMapAndMarker(defaultLat, defaultLng);
+}
+
+// Function to update map view and marker
+
+function updateMapAndMarker(lat, lng) {
+    map.setView([lat, lng], 13);
+    if (userMarker) {
+        userMarker.setLatLng([lat, lng]);
+    } else {
+        userMarker = L.marker([lat, lng]).addTo(map)
+            .bindPopup('You are here').openPopup();
+    }
+}
+
 // Function to calculate distance between two points using Haversine formula
 function calculateDistance(lat1, lon1, lat2, lon2) {
     const R = 6371; // Radius of the Earth in km

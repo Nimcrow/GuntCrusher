@@ -7,7 +7,7 @@ const API_URL = 'https://api.yelp.com/v3/businesses/search';
 
 router.get('/', async (req, res) => {
     const location = req.query.location;
-    const radius = req.query.radius || 9;
+    const radius = req.query.radius || 1;
     const terms = ['restaurants', 'bookstores', 'museums', 'parks', 'zoos', 'arcades', 'escape games', 'theaters'];
     let results = [];
 
