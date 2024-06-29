@@ -11,6 +11,8 @@ app.set('layout', 'layouts/layout') // Create a layout folder to not repeat head
 app.use(expressLayouts) //Use the express layouts over here
 app.use(express.static('public')) //let the server know where we'll be putting our styles, image assets, and javascript
 app.use('/', indexRouter)
+const hotspotsRouter = require('./routes/hotspots')
+app.use('/hotspots', hotspotsRouter)
 const mongoose = require('mongoose')
 mongoose.connect(process.env.DATABASE_URL)
 const db = mongoose.connection
